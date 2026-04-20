@@ -1,7 +1,6 @@
-import React, { useMemo, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { Search, FlaskConical, LineChart, ShieldCheck, CheckCircle2, Award } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { FlaskConical, LineChart, ShieldCheck, CheckCircle2, Award } from "lucide-react";
 
 const WET_LAB = [
   "CRISPR-Cas9 (KI/KO)",
@@ -42,18 +41,8 @@ const COMPLIANCE = [
   { label: "Validation Reports", detail: "Regulatory-aligned documentation" },
 ];
 
-function Column({ icon: Icon, title, items, query, accent = false }) {
-  const filtered = useMemo(
-    () =>
-      !query
-        ? items
-        : items.filter((it) =>
-            (typeof it === "string" ? it : it.label + " " + it.detail)
-              .toLowerCase()
-              .includes(query.toLowerCase())
-          ),
-    [items, query]
-  );
+function Column({ icon: Icon, title, items, accent = false }) {
+  const filtered = items;
 
   return (
     <div className={`p-8 rounded-2xl border ${accent ? "bg-primary/5 border-primary/20" : "bg-white border-border"}`}>
@@ -105,7 +94,6 @@ function Column({ icon: Icon, title, items, query, accent = false }) {
 }
 
 export default function SkillMatrix() {
-  const [q, setQ] = useState("");
 
   return (
     <section id="skills" className="relative py-24 lg:py-32 bg-secondary">
@@ -126,16 +114,6 @@ export default function SkillMatrix() {
               Industry-ready across wet lab, data science and regulatory-grade compliance.
             </p>
           </div>
-
-          <div className="relative w-full lg:w-80">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            <Input
-              value={q}
-              onChange={(e) => setQ(e.target.value)}
-              placeholder="Search skills (e.g. CRISPR)"
-              className="pl-9 h-11 bg-white border-border focus-visible:ring-primary"
-            />
-          </div>
         </motion.div>
 
         <motion.div
@@ -145,9 +123,9 @@ export default function SkillMatrix() {
           transition={{ duration: 0.7 }}
           className="grid lg:grid-cols-3 gap-5"
         >
-          <Column icon={FlaskConical} title="Wet Lab" items={WET_LAB} query={q} />
-          <Column icon={LineChart} title="Data Science" items={DATA_SCI} query={q} />
-          <Column icon={ShieldCheck} title="Compliance" items={COMPLIANCE} query={q} accent />
+          <Column icon={FlaskConical} title="Wet Lab" items={WET_LAB} />
+          <Column icon={LineChart} title="Data Science" items={DATA_SCI} />
+          <Column icon={ShieldCheck} title="Compliance" items={COMPLIANCE} accent />
         </motion.div>
       </div>
     </section>

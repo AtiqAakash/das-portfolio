@@ -22,8 +22,8 @@ export default function Hero() {
       {/* Top nav */}
       <nav className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-8 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center">
-            <span className="text-primary font-mono text-sm font-bold">SD</span>
+          <div className="w-9 h-9 rounded-lg overflow-hidden border border-primary/30 flex items-center justify-center bg-primary/5">
+            <img src="https://media.base44.com/images/public/69e5f7211ac19d873766d2c9/9f05c6481_generated_image.png" alt="SD Logo" className="w-full h-full object-cover" />
           </div>
           <span className="font-semibold tracking-tight text-foreground">Saykat Das, PhD</span>
         </div>
