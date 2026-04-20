@@ -15,10 +15,11 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-background">
       {/* Background grid */}
-      <div className="absolute inset-0 grid-bg opacity-70 pointer-events-none" />
-      {/* Soft cyber glow */}
-      <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-cyber/10 blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-cyber/5 blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 grid-bg opacity-100 pointer-events-none" />
+      {/* Bioluminescent glows */}
+      <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-cyber/15 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-violet/10 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-cyber/5 blur-3xl pointer-events-none" />
 
       {/* Decorative t-SNE */}
       <SciBackground
@@ -29,17 +30,17 @@ export default function Hero() {
       {/* Top bar */}
       <nav className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-8 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-navy flex items-center justify-center">
+          <div className="w-9 h-9 rounded-lg bg-cyber/10 border border-cyber/30 flex items-center justify-center">
             <span className="text-cyber font-mono text-sm font-bold">SD</span>
           </div>
-          <span className="font-semibold tracking-tight text-navy">Saykat Das, PhD</span>
+          <span className="font-semibold tracking-tight text-foreground">Saykat Das, PhD</span>
         </div>
         <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-          <button onClick={() => scrollTo("expertise")} className="hover:text-navy transition">Expertise</button>
-          <button onClick={() => scrollTo("skills")} className="hover:text-navy transition">Skills</button>
-          <button onClick={() => scrollTo("experience")} className="hover:text-navy transition">Experience</button>
-          <button onClick={() => scrollTo("publications")} className="hover:text-navy transition">Publications</button>
-          <button onClick={() => scrollTo("contact")} className="hover:text-navy transition">Contact</button>
+          <button onClick={() => scrollTo("expertise")} className="hover:text-cyber transition">Expertise</button>
+          <button onClick={() => scrollTo("skills")} className="hover:text-cyber transition">Skills</button>
+          <button onClick={() => scrollTo("experience")} className="hover:text-cyber transition">Experience</button>
+          <button onClick={() => scrollTo("publications")} className="hover:text-cyber transition">Publications</button>
+          <button onClick={() => scrollTo("contact")} className="hover:text-cyber transition">Contact</button>
         </div>
       </nav>
 
@@ -77,10 +78,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-8 text-xl sm:text-2xl text-navy/80 max-w-2xl leading-snug text-balance"
+            className="mt-8 text-xl sm:text-2xl text-foreground/80 max-w-2xl leading-snug text-balance"
           >
-            Bridging <span className="text-navy font-semibold">molecular immunology</span> and
-            <span className="text-navy font-semibold"> next-gen immunotherapy</span>
+            Bridging <span className="text-cyber font-semibold">molecular immunology</span> and
+            <span className="text-violet font-semibold"> next-gen immunotherapy</span>
             <span className="text-cyber">.</span>
           </motion.p>
 
@@ -92,7 +93,7 @@ export default function Hero() {
           >
             <Button
               size="lg"
-              className="bg-navy hover:bg-navy/90 text-white rounded-full px-6 h-12"
+              className="bg-cyber hover:bg-cyber/90 text-navy font-semibold rounded-full px-6 h-12"
               onClick={() => scrollTo("contact")}
             >
               <FileText className="w-4 h-4 mr-2" />
@@ -101,7 +102,7 @@ export default function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="rounded-full px-6 h-12 border-navy/20 hover:border-cyber hover:text-navy"
+              className="rounded-full px-6 h-12 border-violet/40 text-violet hover:border-violet hover:bg-violet/10"
               onClick={() => scrollTo("publications")}
             >
               <BookOpen className="w-4 h-4 mr-2" />

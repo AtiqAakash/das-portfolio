@@ -62,21 +62,21 @@ export default function Expertise() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
               whileHover={{ y: -4 }}
-              className="group relative p-8 rounded-2xl bg-white border border-border hover:border-cyber/60 hover:shadow-xl hover:shadow-cyber/5 transition-all duration-300"
+              className="group relative p-8 rounded-2xl bg-card border border-border hover:border-cyber/60 hover:shadow-xl hover:shadow-cyber/10 transition-all duration-300"
             >
               <div className="flex items-start justify-between mb-6">
-                <div className="w-14 h-14 rounded-xl bg-navy flex items-center justify-center group-hover:bg-cyber transition-colors duration-300">
-                  <card.Icon className="w-8 h-8 text-cyber group-hover:text-navy transition-colors duration-300" stroke="currentColor" />
+                <div className="w-14 h-14 rounded-xl bg-cyber/10 border border-cyber/20 flex items-center justify-center group-hover:bg-cyber transition-colors duration-300">
+                  <card.Icon className="w-8 h-8 text-cyber group-hover:text-background transition-colors duration-300" stroke="currentColor" />
                 </div>
                 <span className="text-[10px] font-mono tracking-widest text-muted-foreground">{card.tag}</span>
               </div>
-              <h3 className="text-2xl font-bold text-navy tracking-tight">{card.title}</h3>
+              <h3 className="text-2xl font-bold text-foreground tracking-tight">{card.title}</h3>
               <p className="mt-3 text-muted-foreground leading-relaxed">{card.body}</p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {card.keywords.map((k) => (
                   <span
                     key={k}
-                    className="text-xs font-mono px-2.5 py-1 rounded-md bg-secondary text-navy/70"
+                    className="text-xs font-mono px-2.5 py-1 rounded-md bg-cyber/10 text-cyber border border-cyber/20"
                   >
                     {k}
                   </span>

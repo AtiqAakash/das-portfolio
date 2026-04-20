@@ -14,10 +14,11 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="relative bg-navy text-white overflow-hidden">
+    <footer id="contact" className="relative bg-card text-foreground overflow-hidden border-t border-border">
       {/* Glow */}
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-cyber/10 blur-3xl pointer-events-none" />
-      <div className="absolute inset-0 grid-bg opacity-[0.04] pointer-events-none" />
+      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-cyber/15 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full bg-violet/10 blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 grid-bg pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-28">
         <motion.div
@@ -33,7 +34,7 @@ export default function Footer() {
             <br />
             <span className="text-cyber">generation of therapies.</span>
           </h2>
-          <p className="mt-6 text-white/70 text-lg max-w-xl">
+          <p className="mt-6 text-muted-foreground text-lg max-w-xl">
             Open to biotech, pharma and translational research roles in CAR-T, antibody discovery and immunotherapy.
           </p>
 
@@ -48,48 +49,30 @@ export default function Footer() {
               size="lg"
               variant="outline"
               onClick={copyEmail}
-              className="rounded-full h-12 px-5 bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white"
+              className="rounded-full h-12 px-5 border-border text-foreground hover:bg-cyber/10 hover:border-cyber hover:text-cyber"
             >
-              {copied ? (
-                <>
-                  <Check className="w-4 h-4 mr-2 text-cyber" /> Copied
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4 mr-2" /> Copy email
-                </>
-              )}
+            ...
+            >
+              <Linkedin className="w-4 h-4 mr-2" />
+              LinkedIn
             </Button>
-            <a
-              href="https://www.linkedin.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Button
-                size="lg"
-                variant="outline"
-                className="rounded-full h-12 px-5 bg-transparent border-white/20 text-white hover:bg-white/10 hover:text-white"
-              >
-                <Linkedin className="w-4 h-4 mr-2" />
-                LinkedIn
-              </Button>
             </a>
           </div>
 
-          <div className="mt-10 flex items-center gap-2 text-sm text-white/50">
+          <div className="mt-10 flex items-center gap-2 text-sm text-muted-foreground">
             <MapPin className="w-4 h-4" />
             Utmarkveien 12, 0689, Bøler, Oslo, Norway · +47 969 97 847
           </div>
         </motion.div>
 
         <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs font-mono text-white/40">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-md bg-white/5 border border-white/10 flex items-center justify-center">
+          <div className="flex items-center gap-2 text-muted-foreground">
+            <div className="w-7 h-7 rounded-md bg-cyber/10 border border-cyber/20 flex items-center justify-center">
               <span className="text-cyber font-bold">SD</span>
             </div>
             <span>© {new Date().getFullYear()} Saykat Das, PhD. All rights reserved.</span>
           </div>
-          <div className="flex gap-6">
+          <div className="flex gap-6 text-muted-foreground">
             <span>English · Norsk · Bengali</span>
             <span>Built with precision.</span>
           </div>

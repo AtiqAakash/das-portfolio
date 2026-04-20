@@ -97,7 +97,7 @@ export default function Publications() {
                     href={pub.doi ? `https://doi.org/${pub.doi}` : "#"}
                     target={pub.doi ? "_blank" : undefined}
                     rel="noreferrer"
-                    className="group block p-6 lg:p-7 rounded-2xl bg-white border border-border hover:border-cyber hover:shadow-lg hover:shadow-cyber/5 transition-all"
+                    className="group block p-6 lg:p-7 rounded-2xl bg-card border border-border hover:border-cyber hover:shadow-lg hover:shadow-cyber/10 transition-all"
                   >
                     <div className="flex flex-col lg:flex-row lg:items-start lg:gap-8">
                       <div className="lg:w-48 flex-shrink-0 mb-3 lg:mb-0">
@@ -105,9 +105,9 @@ export default function Publications() {
                           <span
                             className={`text-[10px] font-mono tracking-widest px-2 py-1 rounded ${
                               pub.tier === "top"
-                                ? "bg-navy text-cyber"
+                                ? "bg-cyber/15 text-cyber border border-cyber/30"
                                 : pub.tier === "high"
-                                ? "bg-cyber/10 text-navy"
+                                ? "bg-violet/10 text-violet border border-violet/30"
                                 : "bg-secondary text-muted-foreground"
                             }`}
                           >
@@ -118,7 +118,7 @@ export default function Publications() {
                         <div className="text-xs font-mono text-muted-foreground">{pub.year}</div>
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-semibold text-navy leading-snug group-hover:text-navy">
+                        <h3 className="font-semibold text-foreground leading-snug">
                           {pub.title}
                         </h3>
                         <p className="mt-2 text-sm text-muted-foreground">{pub.authors}</p>
@@ -135,7 +135,7 @@ export default function Publications() {
                     </div>
                   </a>
                 </HoverCardTrigger>
-                <HoverCardContent className="w-80 border-cyber/40 bg-navy text-white p-4">
+                <HoverCardContent className="w-80 border-cyber/40 bg-card text-foreground p-4">
                   <div className="flex items-start gap-2">
                     <Sparkles className="w-4 h-4 text-cyber flex-shrink-0 mt-0.5" />
                     <div>

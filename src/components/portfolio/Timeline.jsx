@@ -147,7 +147,7 @@ export default function Timeline() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-20 p-8 rounded-2xl bg-navy text-white"
+          className="mt-20 p-8 rounded-2xl bg-card border border-border"
         >
           <div className="text-xs font-mono text-cyber tracking-widest mb-6">EDUCATION</div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -159,8 +159,8 @@ export default function Timeline() {
             ].map((e) => (
               <div key={e.d} className="border-l-2 border-cyber/40 pl-4">
                 <div className="text-[11px] font-mono text-cyber tracking-widest">{e.yr}</div>
-                <div className="mt-1 font-semibold">{e.d}</div>
-                <div className="text-sm text-white/60">{e.s}</div>
+                <div className="mt-1 font-semibold text-foreground">{e.d}</div>
+                <div className="text-sm text-muted-foreground">{e.s}</div>
               </div>
             ))}
           </div>

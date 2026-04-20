@@ -59,19 +59,19 @@ function Column({ icon: Icon, title, items, query, accent = false }) {
     <div
       className={`p-8 rounded-2xl border ${
         accent
-          ? "bg-navy text-white border-navy"
-          : "bg-white border-border"
+          ? "bg-cyber/5 border-cyber/40"
+          : "bg-card border-border"
       }`}
     >
       <div className="flex items-center gap-3 mb-6">
         <div
           className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-            accent ? "bg-cyber/20 text-cyber" : "bg-navy/5 text-navy"
+            accent ? "bg-cyber/20 text-cyber" : "bg-cyber/10 text-cyber"
           }`}
         >
           <Icon className="w-5 h-5" />
         </div>
-        <h3 className={`text-lg font-bold tracking-tight ${accent ? "text-white" : "text-navy"}`}>
+        <h3 className={`text-lg font-bold tracking-tight ${accent ? "text-cyber" : "text-foreground"}`}>
           {title}
         </h3>
       </div>
@@ -83,8 +83,8 @@ function Column({ icon: Icon, title, items, query, accent = false }) {
               key={it}
               className={`text-sm px-3 py-1.5 rounded-lg font-mono ${
                 accent
-                  ? "bg-white/10 text-white/90 hover:bg-cyber/20 hover:text-cyber"
-                  : "bg-secondary text-navy/80 hover:bg-cyber/10 hover:text-navy"
+                  ? "bg-cyber/10 text-cyber hover:bg-cyber/20"
+                  : "bg-secondary text-foreground/80 hover:bg-cyber/10 hover:text-cyber"
               } transition cursor-default`}
             >
               {it}
@@ -99,22 +99,15 @@ function Column({ icon: Icon, title, items, query, accent = false }) {
           {filtered.map((it) => (
             <div
               key={it.label}
-              className={`flex items-start gap-3 p-3 rounded-lg ${
-                accent ? "bg-white/5" : "bg-secondary/60"
-              }`}
+              className="flex items-start gap-3 p-3 rounded-lg bg-cyber/5 border border-cyber/10"
             >
-              <div className={`mt-0.5 ${accent ? "text-cyber" : "text-cyber"}`}>
-                {it.label === "GMP Training" ? (
-                  <Award className="w-5 h-5" />
-                ) : (
-                  <CheckCircle2 className="w-5 h-5" />
-                )}
-              </div>
+              <div className="mt-0.5 text-cyber">
+...
               <div>
-                <div className={`font-semibold text-sm ${accent ? "text-white" : "text-navy"}`}>
+                <div className="font-semibold text-sm text-foreground">
                   {it.label}
                 </div>
-                <div className={`text-xs font-mono mt-0.5 ${accent ? "text-white/60" : "text-muted-foreground"}`}>
+                <div className="text-xs font-mono mt-0.5 text-muted-foreground">
                   {it.detail}
                 </div>
               </div>
