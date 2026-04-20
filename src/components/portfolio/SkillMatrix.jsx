@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Search, FlaskConical, LineChart, ShieldCheck, CheckCircle2, Award } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
+
 const WET_LAB = [
   "CRISPR-Cas9 (KI/KO)",
   "Viral Vector Engineering",

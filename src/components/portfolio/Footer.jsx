@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Mail, Linkedin, MapPin, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+
 export default function Footer() {
   const [copied, setCopied] = React.useState(false);
   const email = "saykat_dna@yahoo.com";
