@@ -6,32 +6,32 @@
 
 @layer base {
   :root {
-    /* Bioluminescent Deep Sea palette */
-    --background: 228 72% 6%;             /* Deep Ocean #050F2C */
-    --foreground: 165 100% 95%;           /* Near white with teal tint */
-    --card: 228 60% 9%;
-    --card-foreground: 165 100% 95%;
-    --popover: 228 60% 9%;
-    --popover-foreground: 165 100% 95%;
-    --primary: 165 100% 50%;              /* Electric Teal #00FFD1 */
-    --primary-foreground: 228 72% 6%;
-    --secondary: 228 50% 13%;
-    --secondary-foreground: 165 100% 90%;
-    --muted: 228 50% 13%;
-    --muted-foreground: 228 20% 55%;
-    --accent: 258 100% 69%;               /* Soft Violet #7B61FF */
-    --accent-foreground: 228 72% 6%;
+    /* Clean White / Navy palette */
+    --background: 0 0% 100%;              /* Pure White */
+    --foreground: 222 47% 11%;            /* Deep Navy #0F1829 */
+    --card: 210 40% 98%;                  /* Off-white card */
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 172 100% 37%;              /* Teal #00BD9D */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;             /* Very light grey */
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 20% 50%;
+    --accent: 258 80% 60%;               /* Soft Violet */
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
-    --border: 228 40% 16%;
-    --input: 228 40% 16%;
-    --ring: 165 100% 50%;
+    --border: 214 32% 90%;
+    --input: 214 32% 90%;
+    --ring: 172 100% 37%;
 
-    --navy: 228 72% 6%;
-    --navy-light: 228 55% 12%;
-    --cyber: 165 100% 50%;               /* Electric Teal */
-    --cyber-soft: 165 80% 65%;
-    --violet: 258 100% 69%;              /* Soft Violet */
+    --navy: 222 47% 11%;                 /* Deep Navy */
+    --navy-light: 222 40% 18%;
+    --cyber: 172 100% 37%;               /* Teal */
+    --cyber-soft: 172 70% 50%;
+    --violet: 258 80% 60%;              /* Soft Violet */
 
     --font-inter: 'Inter', system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;

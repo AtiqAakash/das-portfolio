@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Mail, Linkedin, MapPin, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-
 export default function Footer() {
   const [copied, setCopied] = React.useState(false);
   const email = "saykat_dna@yahoo.com";
@@ -15,10 +14,9 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="relative bg-card text-foreground overflow-hidden border-t border-border">
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-cyber/15 blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full bg-violet/10 blur-3xl pointer-events-none" />
-      <div className="absolute inset-0 grid-bg pointer-events-none" />
+    <footer id="contact" className="relative bg-foreground text-white overflow-hidden">
+      {/* Subtle teal glow */}
+      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/10 blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-28">
         <motion.div
@@ -28,19 +26,19 @@ export default function Footer() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl"
         >
-          <div className="text-xs font-mono text-cyber tracking-widest mb-4">05 · GET IN TOUCH</div>
-          <h2 className="text-4xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
+          <div className="text-xs font-mono text-primary tracking-widest mb-4">05 · GET IN TOUCH</div>
+          <h2 className="text-4xl lg:text-6xl font-bold tracking-tight text-white leading-[1.05]">
             Let's engineer the next
             <br />
-            <span className="text-cyber">generation of therapies.</span>
+            <span className="text-primary">generation of therapies.</span>
           </h2>
-          <p className="mt-6 text-muted-foreground text-lg max-w-xl">
+          <p className="mt-6 text-white/60 text-lg max-w-xl">
             Open to biotech, pharma and translational research roles in CAR-T, antibody discovery and immunotherapy.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row flex-wrap gap-3">
             <a href={`mailto:${email}`}>
-              <Button size="lg" className="bg-cyber hover:bg-cyber/90 text-background font-semibold rounded-full h-12 px-6">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold rounded-full h-12 px-6">
                 <Mail className="w-4 h-4 mr-2" />
                 {email}
               </Button>
@@ -49,11 +47,11 @@ export default function Footer() {
               size="lg"
               variant="outline"
               onClick={copyEmail}
-              className="rounded-full h-12 px-5 border-border text-foreground hover:bg-cyber/10 hover:border-cyber hover:text-cyber"
+              className="rounded-full h-12 px-5 border-white/20 text-white hover:bg-white/10 hover:border-white/40 bg-transparent"
             >
               {copied ? (
                 <>
-                  <Check className="w-4 h-4 mr-2 text-cyber" /> Copied
+                  <Check className="w-4 h-4 mr-2 text-primary" /> Copied
                 </>
               ) : (
                 <>
@@ -65,7 +63,7 @@ export default function Footer() {
               <Button
                 size="lg"
                 variant="outline"
-                className="rounded-full h-12 px-5 border-border text-foreground hover:bg-cyber/10 hover:border-cyber hover:text-cyber"
+                className="rounded-full h-12 px-5 border-white/20 text-white hover:bg-white/10 hover:border-white/40 bg-transparent"
               >
                 <Linkedin className="w-4 h-4 mr-2" />
                 LinkedIn
@@ -73,16 +71,16 @@ export default function Footer() {
             </a>
           </div>
 
-          <div className="mt-10 flex items-center gap-2 text-sm text-muted-foreground">
+          <div className="mt-10 flex items-center gap-2 text-sm text-white/50">
             <MapPin className="w-4 h-4" />
             Utmarkveien 12, 0689, Bøler, Oslo, Norway · +47 969 97 847
           </div>
         </motion.div>
 
-        <div className="mt-20 pt-8 border-t border-border flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs font-mono text-muted-foreground">
+        <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs font-mono text-white/30">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-md bg-cyber/10 border border-cyber/20 flex items-center justify-center">
-              <span className="text-cyber font-bold">SD</span>
+            <div className="w-7 h-7 rounded-md bg-primary/20 border border-primary/30 flex items-center justify-center">
+              <span className="text-primary font-bold">SD</span>
             </div>
             <span>© {new Date().getFullYear()} Saykat Das, PhD. All rights reserved.</span>
           </div>

@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Search, FlaskConical, LineChart, ShieldCheck, CheckCircle2, Award } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
-
 const WET_LAB = [
   "CRISPR-Cas9 (KI/KO)",
   "Viral Vector Engineering",
@@ -57,18 +56,12 @@ function Column({ icon: Icon, title, items, query, accent = false }) {
   );
 
   return (
-    <div
-      className={`p-8 rounded-2xl border ${
-        accent ? "bg-cyber/5 border-cyber/40" : "bg-card border-border"
-      }`}
-    >
+    <div className={`p-8 rounded-2xl border ${accent ? "bg-primary/5 border-primary/20" : "bg-white border-border"}`}>
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-cyber/20 text-cyber">
+        <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-primary/10 text-primary">
           <Icon className="w-5 h-5" />
         </div>
-        <h3 className={`text-lg font-bold tracking-tight ${accent ? "text-cyber" : "text-foreground"}`}>
-          {title}
-        </h3>
+        <h3 className="text-lg font-bold tracking-tight text-foreground">{title}</h3>
       </div>
 
       {typeof filtered[0] === "string" ? (
@@ -76,11 +69,7 @@ function Column({ icon: Icon, title, items, query, accent = false }) {
           {filtered.map((it) => (
             <span
               key={it}
-              className={`text-sm px-3 py-1.5 rounded-lg font-mono transition cursor-default ${
-                accent
-                  ? "bg-cyber/10 text-cyber hover:bg-cyber/20"
-                  : "bg-secondary text-foreground/80 hover:bg-cyber/10 hover:text-cyber"
-              }`}
+              className="text-sm px-3 py-1.5 rounded-lg font-mono bg-secondary text-foreground/80 border border-border hover:border-primary/40 hover:text-primary transition cursor-default"
             >
               {it}
             </span>
@@ -94,9 +83,9 @@ function Column({ icon: Icon, title, items, query, accent = false }) {
           {filtered.map((it) => (
             <div
               key={it.label}
-              className="flex items-start gap-3 p-3 rounded-lg bg-cyber/5 border border-cyber/10"
+              className="flex items-start gap-3 p-3 rounded-lg bg-secondary border border-border"
             >
-              <div className="mt-0.5 text-cyber">
+              <div className="mt-0.5 text-primary">
                 {it.label === "GMP Training" ? (
                   <Award className="w-5 h-5" />
                 ) : (
@@ -119,9 +108,7 @@ export default function SkillMatrix() {
   const [q, setQ] = useState("");
 
   return (
-    <section id="skills" className="relative py-24 lg:py-32 bg-secondary/40">
-      <div className="absolute inset-0 dot-bg opacity-50 pointer-events-none" />
-
+    <section id="skills" className="relative py-24 lg:py-32 bg-secondary">
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -131,7 +118,7 @@ export default function SkillMatrix() {
           className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12"
         >
           <div className="max-w-2xl">
-            <div className="text-xs font-mono text-cyber tracking-widest mb-4">02 · TECHNICAL MATRIX</div>
+            <div className="text-xs font-mono text-primary tracking-widest mb-4">02 · TECHNICAL MATRIX</div>
             <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
               A full-stack immunologist's toolkit.
             </h2>
@@ -146,7 +133,7 @@ export default function SkillMatrix() {
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Search skills (e.g. CRISPR)"
-              className="pl-9 h-11 bg-card border-border focus-visible:ring-cyber"
+              className="pl-9 h-11 bg-white border-border focus-visible:ring-primary"
             />
           </div>
         </motion.div>

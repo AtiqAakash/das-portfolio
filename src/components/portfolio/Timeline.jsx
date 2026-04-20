@@ -65,7 +65,7 @@ const EXPERIENCE = [
 
 export default function Timeline() {
   return (
-    <section id="experience" className="relative py-24 lg:py-32 bg-background">
+    <section id="experience" className="relative py-24 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -74,15 +74,15 @@ export default function Timeline() {
           transition={{ duration: 0.6 }}
           className="max-w-2xl mb-16"
         >
-          <div className="text-xs font-mono text-cyber tracking-widest mb-4">03 · EXPERIENCE</div>
-          <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-navy leading-tight">
+          <div className="text-xs font-mono text-primary tracking-widest mb-4">03 · EXPERIENCE</div>
+          <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
             Eight years at the immunology frontier.
           </h2>
         </motion.div>
 
         <div className="relative">
           {/* Vertical line */}
-          <div className="absolute left-[11px] md:left-1/2 top-2 bottom-2 w-px bg-gradient-to-b from-cyber via-cyber/30 to-transparent md:-translate-x-px" />
+          <div className="absolute left-[11px] md:left-1/2 top-2 bottom-2 w-px bg-gradient-to-b from-primary via-primary/30 to-transparent md:-translate-x-px" />
 
           <div className="space-y-12">
             {EXPERIENCE.map((item, idx) => {
@@ -97,8 +97,8 @@ export default function Timeline() {
                   className="relative md:grid md:grid-cols-2 md:gap-12"
                 >
                   {/* Dot */}
-                  <div className="absolute left-0 md:left-1/2 top-2 md:-translate-x-1/2 w-6 h-6 rounded-full bg-white border-2 border-cyber flex items-center justify-center shadow-md z-10">
-                    <span className="w-2 h-2 rounded-full bg-cyber" />
+                  <div className="absolute left-0 md:left-1/2 top-2 md:-translate-x-1/2 w-6 h-6 rounded-full bg-white border-2 border-primary flex items-center justify-center shadow-md z-10">
+                    <span className="w-2 h-2 rounded-full bg-primary" />
                   </div>
 
                   {/* Content */}
@@ -107,9 +107,9 @@ export default function Timeline() {
                       left ? "md:text-right md:pr-12" : "md:col-start-2 md:pl-12"
                     }`}
                   >
-                    <div className="text-xs font-mono text-cyber tracking-widest">{item.period}</div>
-                    <h3 className="mt-2 text-2xl font-bold text-navy tracking-tight">{item.role}</h3>
-                    <div className="mt-1 flex items-center gap-2 text-sm text-muted-foreground md:justify-end">
+                    <div className="text-xs font-mono text-primary tracking-widest">{item.period}</div>
+                    <h3 className="mt-2 text-2xl font-bold text-foreground tracking-tight">{item.role}</h3>
+                    <div className={`mt-1 flex items-center gap-2 text-sm text-muted-foreground ${left ? "md:justify-end" : ""}`}>
                       {left ? (
                         <>
                           <span>{item.org}</span>
@@ -122,16 +122,12 @@ export default function Timeline() {
                         </>
                       )}
                     </div>
-                    <p className="mt-3 text-navy/80 font-medium">{item.focus}</p>
+                    <p className="mt-3 text-foreground/70 font-medium">{item.focus}</p>
                     <ul
-                      className={`mt-4 space-y-2 text-sm text-muted-foreground ${
-                        left ? "md:ml-auto" : ""
-                      } max-w-md ${left ? "md:text-right" : ""}`}
+                      className={`mt-4 space-y-2 text-sm text-muted-foreground max-w-md ${left ? "md:ml-auto md:text-right" : ""}`}
                     >
                       {item.points.map((p, i) => (
-                        <li key={i} className="leading-relaxed">
-                          {p}
-                        </li>
+                        <li key={i} className="leading-relaxed">{p}</li>
                       ))}
                     </ul>
                   </div>
@@ -147,9 +143,9 @@ export default function Timeline() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-20 p-8 rounded-2xl bg-card border border-border"
+          className="mt-20 p-8 rounded-2xl bg-secondary border border-border"
         >
-          <div className="text-xs font-mono text-cyber tracking-widest mb-6">EDUCATION</div>
+          <div className="text-xs font-mono text-primary tracking-widest mb-6">EDUCATION</div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { yr: "2020 – 2023", d: "PhD, Immunology", s: "University of Oslo" },
@@ -157,8 +153,8 @@ export default function Timeline() {
               { yr: "2012 – 2016", d: "BSc, Biochemistry & Biotech", s: "USTC, Bangladesh" },
               { yr: "2008 – 2011", d: "Diploma, Medical Technology", s: "IHT, Bangladesh" },
             ].map((e) => (
-              <div key={e.d} className="border-l-2 border-cyber/40 pl-4">
-                <div className="text-[11px] font-mono text-cyber tracking-widest">{e.yr}</div>
+              <div key={e.d} className="border-l-2 border-primary/40 pl-4">
+                <div className="text-[11px] font-mono text-primary tracking-widest">{e.yr}</div>
                 <div className="mt-1 font-semibold text-foreground">{e.d}</div>
                 <div className="text-sm text-muted-foreground">{e.s}</div>
               </div>

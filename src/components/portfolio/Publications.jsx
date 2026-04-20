@@ -62,9 +62,7 @@ const PUBS = [
 
 export default function Publications() {
   return (
-    <section id="publications" className="relative py-24 lg:py-32 bg-secondary/40">
-      <div className="absolute inset-0 dot-bg opacity-40 pointer-events-none" />
-
+    <section id="publications" className="relative py-24 lg:py-32 bg-secondary">
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -73,8 +71,8 @@ export default function Publications() {
           transition={{ duration: 0.6 }}
           className="max-w-2xl mb-16"
         >
-          <div className="text-xs font-mono text-cyber tracking-widest mb-4">04 · PUBLICATIONS</div>
-          <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-navy leading-tight">
+          <div className="text-xs font-mono text-primary tracking-widest mb-4">04 · PUBLICATIONS</div>
+          <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
             Selected peer-reviewed work.
           </h2>
           <p className="mt-4 text-muted-foreground text-lg">
@@ -97,7 +95,7 @@ export default function Publications() {
                     href={pub.doi ? `https://doi.org/${pub.doi}` : "#"}
                     target={pub.doi ? "_blank" : undefined}
                     rel="noreferrer"
-                    className="group block p-6 lg:p-7 rounded-2xl bg-card border border-border hover:border-cyber hover:shadow-lg hover:shadow-cyber/10 transition-all"
+                    className="group block p-6 lg:p-7 rounded-2xl bg-white border border-border hover:border-primary/50 hover:shadow-lg hover:shadow-black/5 transition-all"
                   >
                     <div className="flex flex-col lg:flex-row lg:items-start lg:gap-8">
                       <div className="lg:w-48 flex-shrink-0 mb-3 lg:mb-0">
@@ -105,28 +103,26 @@ export default function Publications() {
                           <span
                             className={`text-[10px] font-mono tracking-widest px-2 py-1 rounded ${
                               pub.tier === "top"
-                                ? "bg-cyber/15 text-cyber border border-cyber/30"
+                                ? "bg-primary/10 text-primary border border-primary/20"
                                 : pub.tier === "high"
-                                ? "bg-violet/10 text-violet border border-violet/30"
-                                : "bg-secondary text-muted-foreground"
+                                ? "bg-accent/10 text-accent border border-accent/20"
+                                : "bg-secondary text-muted-foreground border border-border"
                             }`}
                           >
                             {pub.tier === "top" ? "★ HIGH IMPACT" : pub.tier === "high" ? "PEER-REVIEWED" : "IN PREP"}
                           </span>
                         </div>
-                        <div className="mt-2 font-bold text-navy italic">{pub.journal}</div>
+                        <div className="mt-2 font-bold text-foreground italic">{pub.journal}</div>
                         <div className="text-xs font-mono text-muted-foreground">{pub.year}</div>
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-semibold text-foreground leading-snug">
-                          {pub.title}
-                        </h3>
+                        <h3 className="font-semibold text-foreground leading-snug">{pub.title}</h3>
                         <p className="mt-2 text-sm text-muted-foreground">{pub.authors}</p>
                         {pub.doi && (
                           <div className="mt-3 flex items-center gap-4 text-xs font-mono text-muted-foreground">
                             <span>DOI: {pub.doi}</span>
                             <span>PMID: {pub.pmid}</span>
-                            <span className="flex items-center gap-1 text-cyber opacity-0 group-hover:opacity-100 transition">
+                            <span className="flex items-center gap-1 text-primary opacity-0 group-hover:opacity-100 transition">
                               View <ExternalLink className="w-3 h-3" />
                             </span>
                           </div>
@@ -135,11 +131,11 @@ export default function Publications() {
                     </div>
                   </a>
                 </HoverCardTrigger>
-                <HoverCardContent className="w-80 border-cyber/40 bg-card text-foreground p-4">
+                <HoverCardContent className="w-80 border-border bg-white text-foreground p-4 shadow-lg">
                   <div className="flex items-start gap-2">
-                    <Sparkles className="w-4 h-4 text-cyber flex-shrink-0 mt-0.5" />
+                    <Sparkles className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                     <div>
-                      <div className="text-[10px] font-mono text-cyber tracking-widest mb-1">INDUSTRY RELEVANCE</div>
+                      <div className="text-[10px] font-mono text-primary tracking-widest mb-1">INDUSTRY RELEVANCE</div>
                       <p className="text-sm leading-relaxed">{pub.impact}</p>
                     </div>
                   </div>

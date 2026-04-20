@@ -35,7 +35,7 @@ const CARDS = [
 
 export default function Expertise() {
   return (
-    <section id="expertise" className="relative py-24 lg:py-32 bg-background">
+    <section id="expertise" className="relative py-24 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,8 +44,8 @@ export default function Expertise() {
           transition={{ duration: 0.6 }}
           className="max-w-2xl mb-16"
         >
-          <div className="text-xs font-mono text-cyber tracking-widest mb-4">01 · CORE EXPERTISE</div>
-          <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-navy leading-tight">
+          <div className="text-xs font-mono text-primary tracking-widest mb-4">01 · CORE EXPERTISE</div>
+          <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
             Translational research, from bench to breakthrough.
           </h2>
           <p className="mt-4 text-muted-foreground text-lg">
@@ -62,11 +62,11 @@ export default function Expertise() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
               whileHover={{ y: -4 }}
-              className="group relative p-8 rounded-2xl bg-card border border-border hover:border-cyber/60 hover:shadow-xl hover:shadow-cyber/10 transition-all duration-300"
+              className="group relative p-8 rounded-2xl bg-white border border-border hover:border-primary/50 hover:shadow-lg hover:shadow-primary/8 transition-all duration-300"
             >
               <div className="flex items-start justify-between mb-6">
-                <div className="w-14 h-14 rounded-xl bg-cyber/10 border border-cyber/20 flex items-center justify-center group-hover:bg-cyber transition-colors duration-300">
-                  <card.Icon className="w-8 h-8 text-cyber group-hover:text-background transition-colors duration-300" stroke="currentColor" />
+                <div className="w-14 h-14 rounded-xl bg-primary/8 border border-primary/15 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors duration-300">
+                  <card.Icon className="w-8 h-8 text-primary group-hover:text-white transition-colors duration-300" stroke="currentColor" />
                 </div>
                 <span className="text-[10px] font-mono tracking-widest text-muted-foreground">{card.tag}</span>
               </div>
@@ -76,7 +76,7 @@ export default function Expertise() {
                 {card.keywords.map((k) => (
                   <span
                     key={k}
-                    className="text-xs font-mono px-2.5 py-1 rounded-md bg-cyber/10 text-cyber border border-cyber/20"
+                    className="text-xs font-mono px-2.5 py-1 rounded-md bg-secondary text-foreground/70 border border-border"
                   >
                     {k}
                   </span>
