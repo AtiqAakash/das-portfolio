@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown, FileText, BookOpen, MapPin, Mail } from "lucide-react";
 import SciBackground from "./SciBackground";
 
-const HERO_IMG = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_69b3e17dba9e5fa973a99481/8b1e4c1a1_img_b17020df1333.png";
+const HERO_IMG = "https://media.base44.com/images/public/69e5f7211ac19d873766d2c9/5da45abc1_generated_a2476dc5.png";
 
 export default function Hero() {
   const scrollTo = (id) => {
