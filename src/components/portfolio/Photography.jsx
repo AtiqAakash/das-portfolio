@@ -21,7 +21,7 @@ function PhotoCell({ allPhotos, startOffset }) {
   useEffect(() => {
     const t = setInterval(() => {
       setIdx((i) => (i + 1) % allPhotos.length);
-    }, 1000 + Math.random() * 600); // slight jitter so cells feel independent
+    }, 3000 + startOffset * 400); // staggered slow cycling, ~3s per photo
     return () => clearInterval(t);
   }, [allPhotos.length]);
 
@@ -39,7 +39,7 @@ function PhotoCell({ allPhotos, startOffset }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 1.2 }}
             className="absolute inset-0 w-full h-full object-cover"
             loading="lazy"
           />
