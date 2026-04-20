@@ -15,7 +15,6 @@ export default function Footer() {
 
   return (
     <footer id="contact" className="relative bg-card text-foreground overflow-hidden border-t border-border">
-      {/* Glow */}
       <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-cyber/15 blur-3xl pointer-events-none" />
       <div className="absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full bg-violet/10 blur-3xl pointer-events-none" />
       <div className="absolute inset-0 grid-bg pointer-events-none" />
@@ -40,7 +39,7 @@ export default function Footer() {
 
           <div className="mt-10 flex flex-col sm:flex-row flex-wrap gap-3">
             <a href={`mailto:${email}`}>
-              <Button size="lg" className="bg-cyber hover:bg-cyber/90 text-navy font-semibold rounded-full h-12 px-6">
+              <Button size="lg" className="bg-cyber hover:bg-cyber/90 text-background font-semibold rounded-full h-12 px-6">
                 <Mail className="w-4 h-4 mr-2" />
                 {email}
               </Button>
@@ -51,11 +50,25 @@ export default function Footer() {
               onClick={copyEmail}
               className="rounded-full h-12 px-5 border-border text-foreground hover:bg-cyber/10 hover:border-cyber hover:text-cyber"
             >
-            ...
-            >
-              <Linkedin className="w-4 h-4 mr-2" />
-              LinkedIn
+              {copied ? (
+                <>
+                  <Check className="w-4 h-4 mr-2 text-cyber" /> Copied
+                </>
+              ) : (
+                <>
+                  <Copy className="w-4 h-4 mr-2" /> Copy email
+                </>
+              )}
             </Button>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+              <Button
+                size="lg"
+                variant="outline"
+                className="rounded-full h-12 px-5 border-border text-foreground hover:bg-cyber/10 hover:border-cyber hover:text-cyber"
+              >
+                <Linkedin className="w-4 h-4 mr-2" />
+                LinkedIn
+              </Button>
             </a>
           </div>
 
@@ -65,14 +78,14 @@ export default function Footer() {
           </div>
         </motion.div>
 
-        <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs font-mono text-white/40">
-          <div className="flex items-center gap-2 text-muted-foreground">
+        <div className="mt-20 pt-8 border-t border-border flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs font-mono text-muted-foreground">
+          <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-md bg-cyber/10 border border-cyber/20 flex items-center justify-center">
               <span className="text-cyber font-bold">SD</span>
             </div>
             <span>© {new Date().getFullYear()} Saykat Das, PhD. All rights reserved.</span>
           </div>
-          <div className="flex gap-6 text-muted-foreground">
+          <div className="flex gap-6">
             <span>English · Norsk · Bengali</span>
             <span>Built with precision.</span>
           </div>

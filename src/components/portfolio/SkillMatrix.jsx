@@ -58,17 +58,11 @@ function Column({ icon: Icon, title, items, query, accent = false }) {
   return (
     <div
       className={`p-8 rounded-2xl border ${
-        accent
-          ? "bg-cyber/5 border-cyber/40"
-          : "bg-card border-border"
+        accent ? "bg-cyber/5 border-cyber/40" : "bg-card border-border"
       }`}
     >
       <div className="flex items-center gap-3 mb-6">
-        <div
-          className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-            accent ? "bg-cyber/20 text-cyber" : "bg-cyber/10 text-cyber"
-          }`}
-        >
+        <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-cyber/20 text-cyber">
           <Icon className="w-5 h-5" />
         </div>
         <h3 className={`text-lg font-bold tracking-tight ${accent ? "text-cyber" : "text-foreground"}`}>
@@ -81,11 +75,11 @@ function Column({ icon: Icon, title, items, query, accent = false }) {
           {filtered.map((it) => (
             <span
               key={it}
-              className={`text-sm px-3 py-1.5 rounded-lg font-mono ${
+              className={`text-sm px-3 py-1.5 rounded-lg font-mono transition cursor-default ${
                 accent
                   ? "bg-cyber/10 text-cyber hover:bg-cyber/20"
                   : "bg-secondary text-foreground/80 hover:bg-cyber/10 hover:text-cyber"
-              } transition cursor-default`}
+              }`}
             >
               {it}
             </span>
@@ -102,14 +96,15 @@ function Column({ icon: Icon, title, items, query, accent = false }) {
               className="flex items-start gap-3 p-3 rounded-lg bg-cyber/5 border border-cyber/10"
             >
               <div className="mt-0.5 text-cyber">
-...
+                {it.label === "GMP Training" ? (
+                  <Award className="w-5 h-5" />
+                ) : (
+                  <CheckCircle2 className="w-5 h-5" />
+                )}
+              </div>
               <div>
-                <div className="font-semibold text-sm text-foreground">
-                  {it.label}
-                </div>
-                <div className="text-xs font-mono mt-0.5 text-muted-foreground">
-                  {it.detail}
-                </div>
+                <div className="font-semibold text-sm text-foreground">{it.label}</div>
+                <div className="text-xs font-mono mt-0.5 text-muted-foreground">{it.detail}</div>
               </div>
             </div>
           ))}
@@ -136,7 +131,7 @@ export default function SkillMatrix() {
         >
           <div className="max-w-2xl">
             <div className="text-xs font-mono text-cyber tracking-widest mb-4">02 · TECHNICAL MATRIX</div>
-            <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-navy leading-tight">
+            <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
               A full-stack immunologist's toolkit.
             </h2>
             <p className="mt-4 text-muted-foreground text-lg">
@@ -150,7 +145,7 @@ export default function SkillMatrix() {
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Search skills (e.g. CRISPR)"
-              className="pl-9 h-11 bg-white border-border focus-visible:ring-cyber"
+              className="pl-9 h-11 bg-card border-border focus-visible:ring-cyber"
             />
           </div>
         </motion.div>
