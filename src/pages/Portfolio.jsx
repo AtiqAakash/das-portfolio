@@ -4,6 +4,7 @@ import Expertise from "@/components/portfolio/Expertise";
 import SkillMatrix from "@/components/portfolio/SkillMatrix";
 import Timeline from "@/components/portfolio/Timeline";
 import Publications from "@/components/portfolio/Publications";
+import Photography from "@/components/portfolio/Photography";
 import Footer from "@/components/portfolio/Footer";
 
 export default function Portfolio() {
@@ -14,6 +15,7 @@ export default function Portfolio() {
       <SkillMatrix />
       <Timeline />
       <Publications />
+      <Photography />
       <Footer />
     </main>
   );
