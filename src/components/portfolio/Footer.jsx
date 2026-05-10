@@ -59,7 +59,7 @@ export default function Footer() {
                 </>
               )}
             </Button>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+            <a href="https://no.linkedin.com/in/saykat-das-423b10155" target="_blank" rel="noreferrer">
               <Button
                 size="lg"
                 variant="outline"
