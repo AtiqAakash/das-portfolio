@@ -1,108 +1,54 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Mail, Linkedin, MapPin, Copy, Check } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Toaster } from "@/components/ui/toaster"
+import { QueryClientProvider } from '@tanstack/react-query'
+import { queryClientInstance } from '@/lib/query-client'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import PageNotFound from './lib/PageNotFound';
+import { AuthProvider, useAuth } from '@/lib/AuthContext';
+import UserNotRegisteredError from '@/components/UserNotRegisteredError';
+import Portfolio from '@/pages/Portfolio';
+import AtiqPortfolio from '@/pages/AtiqPortfolio';
+// Add page imports here
 
-export default function Footer() {
-  const [copied, setCopied] = React.useState(false);
-  const email = "saykat_dna@yahoo.com";
+const AuthenticatedApp = () => {
+  const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
 
-  const copyEmail = async () => {
-    await navigator.clipboard.writeText(email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1600);
-  };
+  if (isLoadingPublicSettings || isLoadingAuth) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center">
+        <div className="w-8 h-8 border-4 border-slate-200 border-t-slate-800 rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
+  if (authError) {
+    if (authError.type === 'user_not_registered') {
+      return <UserNotRegisteredError />;
+    } else if (authError.type === 'auth_required') {
+      navigateToLogin();
+      return null;
+    }
+  }
 
   return (
-    <footer id="contact" className="relative bg-foreground text-white overflow-hidden">
-      {/* Subtle teal glow */}
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/10 blur-3xl pointer-events-none" />
-
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-28">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl"
-        >
-          <div className="text-xs font-mono text-primary tracking-widest mb-4">05 · GET IN TOUCH</div>
-          <h2 className="text-4xl lg:text-6xl font-bold tracking-tight text-white leading-[1.05]">
-            Let's engineer the next
-            <br />
-            <span className="text-primary">generation of therapies.</span>
-          </h2>
-          <p className="mt-6 text-white/80 text-lg max-w-xl">
-            Open to biotech, pharma and translational research roles in CAR-T, antibody discovery and immunotherapy.
-          </p>
-
-          <div className="mt-10 flex flex-col sm:flex-row flex-wrap gap-3">
-            <a href={`mailto:${email}`}>
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold rounded-full h-12 px-6">
-                <Mail className="w-4 h-4 mr-2" />
-                {email}
-              </Button>
-            </a>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={copyEmail}
-              className="rounded-full h-12 px-5 border-white/20 text-white hover:bg-white/10 hover:border-white/40 bg-transparent"
-            >
-              {copied ? (
-                <>
-                  <Check className="w-4 h-4 mr-2 text-primary" /> Copied
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4 mr-2" /> Copy email
-                </>
-              )}
-            </Button>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
-              <Button
-                size="lg"
-                variant="outline"
-                className="rounded-full h-12 px-5 border-white/20 text-white hover:bg-white/10 hover:border-white/40 bg-transparent"
-              >
-                <Linkedin className="w-4 h-4 mr-2" />
-                LinkedIn
-              </Button>
-            </a>
-          </div>
-
-          <div className="mt-10 flex items-center gap-2 text-sm text-white/70">
-            <MapPin className="w-4 h-4" />
-            Utmarkveien 12, 0689, Bøler, Oslo, Norway · +47 969 97 847
-          </div>
-        </motion.div>
-
-        {/* BOTTOM SECTION */}
-        <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs font-mono text-white/50">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-md overflow-hidden border border-primary/30 flex items-center justify-center bg-primary/10">
-              <img src="https://media.base44.com/images/public/69e5f7211ac19d873766d2c9/9f05c6481_generated_image.png" alt="SD Logo" className="w-full h-full object-cover" />
-            </div>
-            <span>
-              © {new Date().getFullYear()} Saykat Das, PhD. All rights reserved.
-            </span>
-          </div>
-          
-          <div className="flex flex-wrap gap-x-8 gap-y-2">
-            <span>
-              Developed by{" "}
-              <a 
-                href="https://atiq.no" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-white hover:text-primary transition-colors underline underline-offset-4"
-              >
-                Atiq
-              </a>
-            </span>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <Routes>
+      <Route path="/" element={<Portfolio />} />
+      <Route path="/atiq" element={<AtiqPortfolio />} />
+      <Route path="*" element={<PageNotFound />} />
+    </Routes>
   );
+};
+
+function App() {
+  return (
+    <AuthProvider>
+      <QueryClientProvider client={queryClientInstance}>
+        <Router>
+          <AuthenticatedApp />
+        </Router>
+        <Toaster />
+      </QueryClientProvider>
+    </AuthProvider>
+  )
 }
+
+export default App
