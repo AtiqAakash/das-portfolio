@@ -12,15 +12,29 @@ const PHOTOS = [
 ];
 
 function PhotoCell({ allPhotos, startOffset }) {
+  // Use startOffset to ensure cells start on different images
   const [idx, setIdx] = useState(startOffset % allPhotos.length);
   const [lightbox, setLightbox] = useState(false);
 
   useEffect(() => {
-    const t = setInterval(() => {
-      setIdx((i) => (i + 1) % allPhotos.length);
-    }, 4000 + startOffset * 500); 
+    // This function picks a random image from your list
+    const changeImage = () => {
+      setIdx((prevIdx) => {
+        let nextIdx;
+        do {
+          nextIdx = Math.floor(Math.random() * allPhotos.length);
+        } while (nextIdx === prevIdx && allPhotos.length > 1); 
+        return nextIdx;
+      });
+    };
+
+    // This creates a random speed for THIS specific block
+    // It will change every 3 to 7 seconds
+    const randomDuration = 3000 + Math.random() * 4000;
+
+    const t = setInterval(changeImage, randomDuration);
     return () => clearInterval(t);
-  }, [allPhotos.length, startOffset]);
+  }, [allPhotos.length]); // Only restarts if the number of photos changes
 
   return (
     <>
