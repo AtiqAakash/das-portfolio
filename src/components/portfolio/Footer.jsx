@@ -91,12 +91,11 @@ export default function Footer() {
                 rel="noopener noreferrer" 
                 className="text-white hover:text-primary transition-colors underline underline-offset-4"
               >
-                Atiq Aakash
+                Atiq
               </a>. All rights reserved.
             </span>
           </div>
           <div className="flex gap-6">
-            <span>English · Norsk · Bengali</span>
             <span>Built with precision.</span>
           </div>
         </div>
