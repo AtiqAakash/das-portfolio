@@ -77,14 +77,20 @@ export default function Footer() {
           </div>
         </motion.div>
 
-        {/* UPDATED COPYRIGHT SECTION */}
+        {/* BOTTOM SECTION */}
         <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs font-mono text-white/50">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-md overflow-hidden border border-primary/30 flex items-center justify-center bg-primary/10">
               <img src="/1_lal.jpeg" alt="Logo" className="w-full h-full object-cover" />
             </div>
             <span>
-              © {new Date().getFullYear()}{" "}
+              © {new Date().getFullYear()} Saykat Das. All rights reserved.
+            </span>
+          </div>
+          
+          <div className="flex items-center gap-6">
+            <span>
+              Developed by{" "}
               <a 
                 href="https://atiq.no" 
                 target="_blank" 
@@ -92,11 +98,9 @@ export default function Footer() {
                 className="text-white hover:text-primary transition-colors underline underline-offset-4"
               >
                 Atiq
-              </a>. All rights reserved.
+              </a>
             </span>
-          </div>
-          <div className="flex gap-6">
-            <span>Built with precision.</span>
+            <span className="hidden sm:inline">Built with precision.</span>
           </div>
         </div>
       </div>
