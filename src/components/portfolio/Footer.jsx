@@ -15,6 +15,7 @@ export default function Footer() {
 
   return (
     <footer id="contact" className="relative bg-foreground text-white overflow-hidden">
+      {/* Subtle teal glow */}
       <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/10 blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-28">
@@ -49,12 +50,16 @@ export default function Footer() {
               className="rounded-full h-12 px-5 border-white/20 text-white hover:bg-white/10 hover:border-white/40 bg-transparent"
             >
               {copied ? (
-                <><Check className="w-4 h-4 mr-2 text-primary" /> Copied</>
+                <>
+                  <Check className="w-4 h-4 mr-2 text-primary" /> Copied
+                </>
               ) : (
-                <><Copy className="w-4 h-4 mr-2" /> Copy email</>
+                <>
+                  <Copy className="w-4 h-4 mr-2" /> Copy email
+                </>
               )}
             </Button>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+            <a href="https://no.linkedin.com/in/saykat-das-423b10155" target="_blank" rel="noreferrer">
               <Button
                 size="lg"
                 variant="outline"
@@ -72,16 +77,30 @@ export default function Footer() {
           </div>
         </motion.div>
 
+        {/* BOTTOM SECTION */}
         <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs font-mono text-white/50">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-md overflow-hidden border border-primary/30 flex items-center justify-center bg-primary/10">
-              <img src="https://media.base44.com/images/public/69e5f7211ac19d873766d2c9/9f05c6481_generated_image.png" alt="SD Logo" className="w-full h-full object-cover" />
+              <img src="/1_lal.jpeg" alt="Logo" className="w-full h-full object-cover" />
             </div>
-            <span>© {new Date().getFullYear()} Saykat Das, PhD. All rights reserved.</span>
+            <span>
+              © {new Date().getFullYear()} Saykat Das. All rights reserved.
+            </span>
           </div>
-          <div className="flex gap-6">
-            <span>English · Norsk · Bengali</span>
-            <span>Built with precision.</span>
+          
+          <div className="flex items-center gap-6">
+            <span>
+              Developed by{" "}
+              <a 
+                href="https://atiq.no" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-white hover:text-primary transition-colors underline underline-offset-4"
+              >
+                Atiq
+              </a>
+            </span>
+            <span className="hidden sm:inline">Built with precision.</span>
           </div>
         </div>
       </div>
