@@ -2,33 +2,15 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
+// Paths for images located in the /public folder
 const PHOTOS = [
-  "/src/assets/1_lal.jpeg",
-  "/src/assets/2_lal.jpeg",
-  "/src/assets/3_lal.jpeg",
-  "/src/assets/4_lal.jpeg",
-  "/src/assets/5_lal.jpeg",
-  "/src/assets/6_lal.jpeg",
-  "/src/assets/7_lal.jpeg",
-  "/src/assets/8_lal.jpeg",
-  "/src/assets/9_lal.jpeg",
-  "/src/assets/10_lal.jpeg",
-  "/src/assets/11_lal.jpeg",
-  "/src/assets/12_lal.jpeg",
-  "/src/assets/13_lal.jpeg",
-  "/src/assets/14_lal.jpeg",
-  "/src/assets/15_lal.jpeg",
-  "/src/assets/16_lal.jpeg",
-  "/src/assets/17_lal.jpeg",
-  "/src/assets/18_lal.jpeg",
-  "/src/assets/19_lal.jpeg",
-  "/src/assets/20_lal.jpeg",
-  "/src/assets/21_lal.jpeg",
-  "/src/assets/22_lal.jpeg",
-  "/src/assets/23_lal.jpeg",
+  "/1_lal.jpeg", "/2_lal.jpeg", "/3_lal.jpeg", "/4_lal.jpeg", "/5_lal.jpeg",
+  "/6_lal.jpeg", "/7_lal.jpeg", "/8_lal.jpeg", "/9_lal.jpeg", "/10_lal.jpeg",
+  "/11_lal.jpeg", "/12_lal.jpeg", "/13_lal.jpeg", "/14_lal.jpeg", "/15_lal.jpeg",
+  "/16_lal.jpeg", "/17_lal.jpeg", "/18_lal.jpeg", "/19_lal.jpeg", "/20_lal.jpeg",
+  "/21_lal.jpeg", "/22_lal.jpeg", "/23_lal.jpeg"
 ];
 
-// Each cell gets a random starting offset so they don't all cycle in sync
 function PhotoCell({ allPhotos, startOffset }) {
   const [idx, setIdx] = useState(startOffset % allPhotos.length);
   const [lightbox, setLightbox] = useState(false);
@@ -36,9 +18,9 @@ function PhotoCell({ allPhotos, startOffset }) {
   useEffect(() => {
     const t = setInterval(() => {
       setIdx((i) => (i + 1) % allPhotos.length);
-    }, 3000 + startOffset * 400); // staggered slow cycling, ~3s per photo
+    }, 4000 + startOffset * 500); 
     return () => clearInterval(t);
-  }, [allPhotos.length]);
+  }, [allPhotos.length, startOffset]);
 
   return (
     <>
@@ -54,7 +36,7 @@ function PhotoCell({ allPhotos, startOffset }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 3 }}
+            transition={{ duration: 1.5 }}
             className="absolute inset-0 w-full h-full object-cover"
             loading="lazy"
           />
@@ -62,51 +44,48 @@ function PhotoCell({ allPhotos, startOffset }) {
         <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/15 transition-colors duration-300 rounded-xl" />
       </button>
 
-      {/* Lightbox */}
       <AnimatePresence>
         {lightbox && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/90 backdrop-blur-sm p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
             onClick={() => setLightbox(false)}
           >
             <motion.div
-              initial={{ scale: 0.94, opacity: 0 }}
+              initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.94, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="relative max-w-3xl w-full"
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative max-w-5xl w-full flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
               <img
-                src={allPhotos[idx].replace("w=800", "w=1200")}
+                src={allPhotos[idx]}
                 alt="Photography"
-                className="w-full object-contain rounded-xl max-h-[80vh]"
+                className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
               />
+              
               <button
                 onClick={() => setLightbox(false)}
-                className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center border border-white/20 transition"
+                className="absolute -top-12 right-0 text-white/70 hover:text-white transition-colors"
               >
-                <X className="w-4 h-4" />
+                <X className="w-10 h-10" />
               </button>
+
               <button
                 onClick={() => setIdx((i) => (i - 1 + allPhotos.length) % allPhotos.length)}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center border border-white/20 transition"
+                className="absolute -left-4 lg:-left-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 text-white flex items-center justify-center border border-white/10 transition-all"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-8 h-8" />
               </button>
+
               <button
                 onClick={() => setIdx((i) => (i + 1) % allPhotos.length)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center border border-white/20 transition"
+                className="absolute -right-4 lg:-right-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 text-white flex items-center justify-center border border-white/10 transition-all"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-8 h-8" />
               </button>
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[10px] font-mono text-white/60 tracking-widest">
-                {idx + 1} / {allPhotos.length}
-              </div>
             </motion.div>
           </motion.div>
         )}
@@ -119,39 +98,32 @@ const OFFSETS = [0, 2, 4, 6, 1, 3, 5, 7];
 
 export default function Photography() {
   return (
-    <section id="photography" className="relative py-20 lg:py-28 bg-white">
+    <section id="photography" className="relative py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-10"
+          className="mb-12"
         >
           <div className="text-xs font-mono text-muted-foreground tracking-widest mb-3">
-            PERSONAL · PHOTOGRAPHY
+            04 · CREATIVE OUTLET
           </div>
-          <h2 className="text-2xl lg:text-3xl font-bold tracking-tight text-foreground">
+          <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
             Photography <span className="font-normal text-muted-foreground">(Hobby)</span>
           </h2>
-          <p className="mt-3 text-muted-foreground leading-relaxed text-sm lg:text-base max-w-lg">
-            Outside the lab, photography serves as a quiet creative outlet — a practice in observation,
-            composition, and the interplay of light and detail. The same attention to precision that
-            drives scientific work translates naturally into framing a scene.
+          <p className="mt-4 text-muted-foreground leading-relaxed text-base max-w-2xl">
+            Outside the lab, photography serves as a quiet creative outlet—a practice in observation, 
+            composition, and the interplay of light and detail.
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 lg:gap-3"
-        >
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3">
           {OFFSETS.map((offset, i) => (
             <PhotoCell key={i} allPhotos={PHOTOS} startOffset={offset} />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
