@@ -3,14 +3,29 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const PHOTOS = [
-  "https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?w=800&q=80",
-  "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=800&q=80",
-  "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=80",
-  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80",
-  "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&q=80",
-  "https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?w=800&q=80",
-  "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80",
-  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+  "/src/assets/1_lal.jpeg",
+  "/src/assets/2_lal.jpeg",
+  "/src/assets/3_lal.jpeg",
+  "/src/assets/4_lal.jpeg",
+  "/src/assets/5_lal.jpeg",
+  "/src/assets/6_lal.jpeg",
+  "/src/assets/7_lal.jpeg",
+  "/src/assets/8_lal.jpeg",
+  "/src/assets/9_lal.jpeg",
+  "/src/assets/10_lal.jpeg",
+  "/src/assets/11_lal.jpeg",
+  "/src/assets/12_lal.jpeg",
+  "/src/assets/13_lal.jpeg",
+  "/src/assets/14_lal.jpeg",
+  "/src/assets/15_lal.jpeg",
+  "/src/assets/16_lal.jpeg",
+  "/src/assets/17_lal.jpeg",
+  "/src/assets/18_lal.jpeg",
+  "/src/assets/19_lal.jpeg",
+  "/src/assets/20_lal.jpeg",
+  "/src/assets/21_lal.jpeg",
+  "/src/assets/22_lal.jpeg",
+  "/src/assets/23_lal.jpeg",
 ];
 
 // Each cell gets a random starting offset so they don't all cycle in sync
