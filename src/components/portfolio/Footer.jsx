@@ -77,12 +77,23 @@ export default function Footer() {
           </div>
         </motion.div>
 
+        {/* UPDATED COPYRIGHT SECTION */}
         <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs font-mono text-white/50">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-md overflow-hidden border border-primary/30 flex items-center justify-center bg-primary/10">
-              <img src="https://media.base44.com/images/public/69e5f7211ac19d873766d2c9/9f05c6481_generated_image.png" alt="SD Logo" className="w-full h-full object-cover" />
+              <img src="/1_lal.jpeg" alt="Logo" className="w-full h-full object-cover" />
             </div>
-            <span>© {new Date().getFullYear()} Saykat Das, PhD. All rights reserved.</span>
+            <span>
+              © {new Date().getFullYear()}{" "}
+              <a 
+                href="https://atiq.no" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-white hover:text-primary transition-colors underline underline-offset-4"
+              >
+                Atiq Aakash
+              </a>. All rights reserved.
+            </span>
           </div>
           <div className="flex gap-6">
             <span>English · Norsk · Bengali</span>
