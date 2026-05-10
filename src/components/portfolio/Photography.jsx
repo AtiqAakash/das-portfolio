@@ -25,8 +25,9 @@ function PhotoCell({ allPhotos, startOffset, className = "" }) {
       });
     };
 
-    // Slow display duration: 8 to 12 seconds
-    const randomDuration = 8000 + Math.random() * 4000;
+    // SPEED CONTROL: 
+    // 5000 (base ms) + 3000 (random variance) = changes every 5-8 seconds.
+    const randomDuration = 5000 + Math.random() * 3000;
 
     const t = setInterval(changeImage, randomDuration);
     return () => clearInterval(t);
@@ -36,22 +37,22 @@ function PhotoCell({ allPhotos, startOffset, className = "" }) {
     <>
       <button
         onClick={() => setLightbox(true)}
-        className={`group relative overflow-hidden bg-secondary focus:outline-none ${className}`}
+        className={`group relative overflow-hidden bg-muted focus:outline-none ${className}`}
       >
         <AnimatePresence mode="wait">
           <motion.img
             key={idx}
             src={allPhotos[idx]}
-            alt="Photography"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 2 }} // 2-second elegant fade
-            className="absolute inset-0 w-full h-full object-cover"
+            alt="Gallery"
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 2 }} // Smooth 2s cross-fade
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             loading="lazy"
           />
         </AnimatePresence>
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500" />
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-500" />
       </button>
 
       <AnimatePresence>
@@ -70,14 +71,14 @@ function PhotoCell({ allPhotos, startOffset, className = "" }) {
               className="relative max-w-5xl w-full flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <img src={allPhotos[idx]} alt="Full view" className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl" />
-              <button onClick={() => setLightbox(false)} className="absolute -top-14 right-0 text-white/70 hover:text-white transition-colors">
+              <img src={allPhotos[idx]} alt="Preview" className="max-w-full max-h-[85vh] object-contain shadow-2xl" />
+              <button onClick={() => setLightbox(false)} className="absolute -top-14 right-0 text-white/70 hover:text-white">
                 <X className="w-10 h-10" />
               </button>
-              <button onClick={() => setIdx((i) => (i - 1 + allPhotos.length) % allPhotos.length)} className="absolute -left-4 lg:-left-20 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-md transition-all">
+              <button onClick={() => setIdx((i) => (i - 1 + allPhotos.length) % allPhotos.length)} className="absolute -left-4 lg:-left-20 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-md">
                 <ChevronLeft className="w-8 h-8" />
               </button>
-              <button onClick={() => setIdx((i) => (i + 1) % allPhotos.length)} className="absolute -right-4 lg:-right-20 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-md transition-all">
+              <button onClick={() => setIdx((i) => (i + 1) % allPhotos.length)} className="absolute -right-4 lg:-right-20 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-md">
                 <ChevronRight className="w-8 h-8" />
               </button>
             </motion.div>
@@ -90,39 +91,40 @@ function PhotoCell({ allPhotos, startOffset, className = "" }) {
 
 export default function Photography() {
   return (
-    <section id="photography" className="relative pt-24 pb-0 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-16">
+    <section id="photography" className="relative bg-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          className="mb-12"
         >
-          <div className="text-xs font-mono text-primary tracking-widest mb-3">04 · CREATIVE OUTLET</div>
-          <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
-            Photography <span className="font-light text-muted-foreground italic">Gallery</span>
+          <div className="text-xs font-mono text-primary tracking-widest mb-3 text-center md:text-left">04 · MOMENTS</div>
+          <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground text-center md:text-left">
+            Observation & <span className="text-muted-foreground font-light italic">Detail</span>
           </h2>
-          <p className="mt-4 text-muted-foreground leading-relaxed text-lg max-w-2xl">
-            A practice in observation and the interplay of light. These captures represent moments of stillness away from the laboratory.
-          </p>
         </motion.div>
-      </div>
 
-      {/* FULL WIDTH BENTO GRID WITH NO GAPS */}
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-0 h-[800px] md:h-[600px] border-y border-border">
-        {/* Large Feature */}
-        <PhotoCell allPhotos={PHOTOS} startOffset={0} className="col-span-2 row-span-2" />
-        
-        {/* Vertical Talls */}
-        <PhotoCell allPhotos={PHOTOS} startOffset={5} className="col-span-1 row-span-2" />
-        <PhotoCell allPhotos={PHOTOS} startOffset={8} className="col-span-1 row-span-2" />
-        
-        {/* Squares */}
-        <PhotoCell allPhotos={PHOTOS} startOffset={12} className="col-span-1 row-span-1" />
-        <PhotoCell allPhotos={PHOTOS} startOffset={15} className="col-span-1 row-span-1" />
-        
-        {/* Horizontal Wide */}
-        <PhotoCell allPhotos={PHOTOS} startOffset={3} className="col-span-2 row-span-1" />
+        {/* PROFESSIONAL SEAMLESS GRID */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-0 h-[900px] md:h-[700px] border border-border">
+          {/* Big Feature */}
+          <PhotoCell allPhotos={PHOTOS} startOffset={0} className="col-span-2 row-span-2" />
+          
+          {/* Portrait blocks */}
+          <PhotoCell allPhotos={PHOTOS} startOffset={3} className="col-span-1 row-span-2" />
+          <PhotoCell allPhotos={PHOTOS} startOffset={7} className="col-span-1 row-span-2" />
+          
+          {/* Wide block */}
+          <PhotoCell allPhotos={PHOTOS} startOffset={11} className="col-span-2 row-span-1" />
+          
+          {/* Square fillers */}
+          <PhotoCell allPhotos={PHOTOS} startOffset={15} className="col-span-1 row-span-1" />
+          <PhotoCell allPhotos={PHOTOS} startOffset={19} className="col-span-1 row-span-1" />
+          
+          {/* Final Large landscape */}
+          <PhotoCell allPhotos={PHOTOS} startOffset={5} className="col-span-2 row-span-1" />
+        </div>
       </div>
     </section>
   );
